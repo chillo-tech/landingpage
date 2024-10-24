@@ -8,6 +8,7 @@ pipeline {
         BRANCH = "main"
         EMAIL =  "achille.mbougueng@chillo.tech"
         USER_NAME = "chillo-tech"
+        GIT_CREDENTIALS = credentials('github-chillotech-pat') 
     }
 
     parameters {
