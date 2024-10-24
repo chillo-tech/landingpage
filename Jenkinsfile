@@ -11,7 +11,7 @@ pipeline {
     }
 
     parameters {
-        string(name: "name", defaultValue: "user-card")
+        string(name: "file", defaultValue: "user-card")
         text(name: "content")
         choice(name: "extension", choices: ['txt', 'docx'])
     }
@@ -22,12 +22,16 @@ pipeline {
                 sh "echo 'File ${params.name}'"
                 sh "echo 'Extension ${params.extension}'"
                 sh "echo 'Content ${params.content}'"
+                sh "printenv"
             }
         }
 
         stage('build') {
+            when {
+                environmennt name: "file", value : "index"
+            }
             steps {
-                sh "echo 'Hello ${env.username}' > ${env.fileName}"
+                sh "echo 'Hello ${env.username}' > ${params.file}.${params.extension}"
             }
         }
         
