@@ -8,7 +8,6 @@ pipeline {
         BRANCH = "main"
         EMAIL =  "achille.mbougueng@chillo.tech"
         USER_NAME = "chillo-tech"
-        GIT_CREDENTIALS = credentials('github-chillotech-pat') 
     }
 
     parameters {
@@ -21,7 +20,7 @@ pipeline {
         stage ('Initialtisation') {
             steps {
                 sh "printenv"
-                git url: "${REPOSITORY}", branch: "${BRANCH}", credentialsId: 'github-chillotech-pat'
+                git url: "${REPOSITORY}", branch: "${BRANCH}"
                 sh "echo 'Content ${params.content}'"
             }
         }
