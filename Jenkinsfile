@@ -21,7 +21,7 @@ pipeline {
         stage ('Initialtisation') {
             steps {
                  git url: 'https://github.com/chillo-tech/landingpage.git',
-                    credentialsId: 'github-pat', 
+                    credentialsId: 'github', 
                     branch: 'main'
                 
                 sh "echo 'File ${params.name}'"
