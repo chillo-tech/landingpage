@@ -21,7 +21,7 @@ pipeline {
         stage ('Initialtisation') {
             steps {
                 sh "printenv"
-                git url: "${REPOSITORY}", branch: "${BRANCH}"
+                git url: "${REPOSITORY}", branch: "${BRANCH}", credentialsId: 'github-pat'
                 sh "echo 'Content ${params.content}'"
             }
         }
