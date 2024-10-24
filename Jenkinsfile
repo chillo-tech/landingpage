@@ -8,6 +8,7 @@ pipeline {
     environment {
         fileName = 'file.txt'
         username = 'Achille'
+        GIT_CREDENTIALS = credentials('github')
     }
 
     parameters {
@@ -19,6 +20,10 @@ pipeline {
     stages {
         stage ('Initialtisation') {
             steps {
+                 git url: 'https://github.com/chillo-tech/landingpage.git',
+                    credentialsId: 'github-pat', 
+                    branch: 'main'
+                
                 sh "echo 'File ${params.name}'"
                 sh "echo 'Extension ${params.extension}'"
                 sh "echo 'Content ${params.content}'"
