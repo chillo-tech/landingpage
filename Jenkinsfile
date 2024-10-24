@@ -37,8 +37,8 @@ pipeline {
         
         stage('Update commits') {
             steps {
-                git config user.email ${env.EMAIL}
                 sh """
+                    git config user.email ${env.EMAIL}
                     git config user.email ${env.EMAIL}
                     git config user.name ${env.USER_NAME}
 
