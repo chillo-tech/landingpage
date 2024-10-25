@@ -57,7 +57,7 @@ pipeline {
                     git status
                     
                     git commit -am "Fichier  ${params.file}.${params.extension}"
-                    git push origin "${env.BRANCH}"
+                    
                 """
             }
         }
