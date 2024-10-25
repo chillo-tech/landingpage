@@ -30,7 +30,7 @@ pipeline {
                sh "echo ${params.content} > ${params.name}.${params.extension}"
             }
         }
-        
+        /*
         stage('Update commits') {
             steps {
                 sh """
@@ -44,7 +44,23 @@ pipeline {
                 """
             }
         }
-        
+        */
+        stage('Update commits') {
+            steps {
+                sh '''
+                    git status
+                    cat jenkinsfile_tp24102024
+                    git config user.email ${env.EMAIL}
+                    git config user.name ${env.USER_NAME}
+
+                    git add .
+                    git status
+                    
+                    git commit -am "Fichier  ${params.file}.${params.extension}"
+                    git push origin "${BRANCHE}"
+                '''
+            }
+        }
         
         stage('check') {
             steps {
